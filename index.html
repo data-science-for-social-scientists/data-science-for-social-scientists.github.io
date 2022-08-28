@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ATUSX Diary Visualizer | Static)</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat%7CRoboto:300,400,700" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script src="https://kit.fontawesome.com/d8ea14be3e.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/nv.d3.lean-test.js"></script>
+    <script src="js/stackedArea.js"></script>
+    <script src="js/d3.v4.js"></script>
+    <script src="js/d3-chord.v2.js"></script>
+    <script src="js/d3-path.v2.js"></script>
+    <script src="js/jquery.vmap.js"></script>
+    <script src="js/jquery.vmap.usa.js"></script>
+    <script src="js/liquidGauge.js"></script>
+    <script src="js/colors.js"></script>
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DFX5BQZ224"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-DFX5BQZ224');
+    </script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/nv.d3.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/heroes/">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
+
+
+    <!-- Custom styles for this template -->
+    <link href="css/heroes.css" rel="stylesheet">
+    <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+
+</head>
+
+
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-secondary" aria-label="Eighth navbar example">
+        <div class="container">
+            <img src="img/Risorsa 9.svg" class="img-fluid max-vh-5" style="height: 40px; margin: 5px;" alt="ATU logo">
+            <div class="navbar-brand">ATUS-X Visualizer </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample07">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="dashboard.html">Visualize</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav> <!-- end top-nav -->
+</header>
+
+    <main>
+
+    <div class="container col-xxl-8 px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-lg-6">
+                <video src="img/time_use.webm" muted loop autoplay class="d-block mx-lg-auto img-fluid" width="700" height="500"></video>
+           </div>
+            <div class="col-lg-6">
+                <h1 class="display-5 fw-bold lh-1 mb-3">Create your own time-use visualizations!</h1>
+                <p class="lead">Quickly design and customize your own time-use visualizations. This website provides a collection of time-use visualizations and their code to help researchers and other interested people to create their own time-use graphs.</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a href="dashboard.html" class="btn btn-secondary btn-lg px-4 gap-3 border-light" role="button" style="color: white;">Go to visualizations!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="b-example-divider"></div>
+
+    <div class="container px-4 py-5" id="icon-grid">
+        <h2 class="pb-2 border-bottom border-secondary">Features</h2>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 g-4 py-5">
+            <div class="col d-flex align-items-start">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><i class="las la-chart-area la-3x"></i></svg>
+                <div>
+                    <h4 class="fw-bold mb-0">Tempograms</h4>
+                    <p>Tempograms allow visualizing multiple 24-hour diaries as area plots.</p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><i class="las la-chart-pie la-3x"></i></svg>
+                <div>
+                    <h4 class="fw-bold mb-0">Transitions</h4>
+                    <p>Transitions help figure out which activities are more likely to follow.</p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><i class="las la-clock la-3x"></i></svg>
+                <div>
+                    <h4 class="fw-bold mb-0">Moving Diaries</h4>
+                    <p>Path diaries visualize diaries as paths from activity to activity.</p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><i class="las la-map-marker la-3x"></i></svg>
+                <div>
+                    <h4 class="fw-bold mb-0">Maps</h4>
+                    <p>Maps help visualize averages by US states.</p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><i class="las la-hourglass-half la-3x"></i></svg>
+                <div>
+                    <h4 class="fw-bold mb-0">Total Time</h4>
+                    <p>Total time visualizations help summarize where all time goes.</p>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start">
+                <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><i class="las la-copy la-3x"></i></svg>
+                <div>
+                    <h4 class="fw-bold mb-0">Copy Your Code</h4>
+                    <p>Paragraph of text beneath the heading to explain the heading.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="b-example-divider"></div>
+
+    </main>
+
+<footer class="bg-secondary">
+    <div class="footer-content container">
+        <div class="made-with"><i class="las la-copyright"></i>Kamila Kolpashnikova</div>
+        <div class="ATUSx">
+            <div class="data-text">Powered by <a class="data-resource" href="https://www.atusdata.org/atus/">ATUSx</a> 2011-2019 data</div>
+        </div>
+        <ul>
+            <li class="ms-3">Follow: </li>
+            <li class="ms-3"><a class="link-light" href="https://twitter.com/asocialscienti1" target="_blank"><i class="la la-twitter la"></i></a></li>
+            <li class="ms-3"><a class="link-light" href="https://www.linkedin.com/in/kamilakolpashnikova" target="_blank"><i class="la la-linkedin la"></i></a></li>
+            <li class="ms-3"><a class="link-light" href="https://github.com/Kolpashnikova" target="_blank"><i class="la la-github la"></i></a></li>
+        </ul>
+    </div> <!-- end footer-content -->
+</footer>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+
+<script>
+    //window.onresize = function(){ location.reload(); }
+</script>
+
+</body>
+</html>
