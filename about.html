@@ -1,172 +1,160 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>ATUSX Diary Visualizer | Static)</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat%7CRoboto:300,400,700" rel="stylesheet">
-
-    <!-- Scripts -->
-    <script src="https://kit.fontawesome.com/d8ea14be3e.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="js/nv.d3.lean-test.js"></script>
-    <script src="js/stackedArea.js"></script>
-    <script src="js/d3.v4.js"></script>
-    <script src="js/d3-chord.v2.js"></script>
-    <script src="js/d3-path.v2.js"></script>
-    <script src="js/jquery.vmap.js"></script>
-    <script src="js/jquery.vmap.usa.js"></script>
-    <script src="js/liquidGauge.js"></script>
-    <script src="js/colors.js"></script>
-
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DFX5BQZ224"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-DFX5BQZ224');
-    </script>
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/nv.d3.css">
-    <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/responsive.css">
-
-
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/heroes/">
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
-
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-
-        .b-example-divider {
-            height: 3rem;
-            background-color: rgba(0, 0, 0, .1);
-            border: solid rgba(0, 0, 0, .15);
-            border-width: 1px 0;
-            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-        }
-
-        .b-example-vr {
-            flex-shrink: 0;
-            width: 1.5rem;
-            height: 100vh;
-        }
-
-        .bi {
-            vertical-align: -.125em;
-            fill: currentColor;
-        }
-
-        .nav-scroller {
-            position: relative;
-            z-index: 2;
-            height: 2.75rem;
-            overflow-y: hidden;
-        }
-
-        .nav-scroller .nav {
-            display: flex;
-            flex-wrap: nowrap;
-            padding-bottom: 1rem;
-            margin-top: -1px;
-            overflow-x: auto;
-            text-align: center;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
-        }
-    </style>
-
-
-    <!-- Custom styles for this template -->
-    <link href="css/heroes.css" rel="stylesheet">
-    <link href="css/navbar.css" rel="stylesheet">
-    <link href="css/dashboard.css" rel="stylesheet">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="icon" type="image/svg+xml" href="img/vite.svg" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/extra.css">
 </head>
-
-
 <body>
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-secondary" aria-label="Eighth navbar example">
-        <div class="container">
-            <img src="img/Risorsa 9.svg" class="img-fluid max-vh-5" style="height: 40px; margin: 5px;" alt="ATU logo">
-            <div class="navbar-brand">ATUS-X Visualizer </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+   <!--
+        This example requires some changes to your config:
+        
+        ```
+        // tailwind.config.js
+        module.exports = {
+            // ...
+            plugins: [
+            // ...
+            require('@tailwindcss/aspect-ratio'),
+            ],
+        }
+        ```
+        -->
+    <div class="bg-white">
+            <div class="relative overflow-hidden">
+                <header class="relative" x-data="{ mOpen: false }">
+                    <div class="bg-gray-900 pt-6">
+                      <nav class="relative mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6" aria-label="Global">
+                        <div class="flex flex-1 items-center">
+                          <div class="flex w-full items-center justify-between md:w-auto">
+                            <a href="/index.html">
+                              <span class="sr-only">ATUS-X Visualizer</span>
+                              <img class="h-8 w-auto sm:h-10" src="img/Risorsa 9.svg" alt="">
+                            </a>
+                            <div class="-mr-2 flex items-center md:hidden">
+                              <button @click="mOpen = true" type="button" class="focus-ring-inset inline-flex items-center justify-center rounded-md bg-gray-900 p-2 text-gray-400 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-white" aria-expanded="false">
+                                <span class="sr-only">mOpen main </span>
+                                <!-- Heroicon name: outline/bars-3 -->
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                                </svg>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="hidden space-x-8 md:ml-10 md:flex">
+          
+                          </div>
+                        </div>
+                        <div class="hidden md:flex md:items-center md:space-x-6">
+                          
+                          <a href="index.html" class="text-base font-medium text-white hover:text-gray-300">Home</a>
+          
+                          <a href="dashboard.html" class="text-base font-medium text-white hover:text-gray-300">Visualize</a>
+          
+                          <a href="about.html" class="text-base font-medium text-white hover:text-gray-300">About</a>
+                          
+                        </div>
+                      </nav>
+                    </div>
+          
+                          <!--
+                  Mobile , show/hide based on  open state.
+          
+                  Entering: "duration-150 ease-out"
+                    From: "opacity-0 scale-95"
+                    To: "opacity-100 scale-100"
+                  Leaving: "duration-100 ease-in"
+                    From: "opacity-100 scale-100"
+                    To: "opacity-0 scale-95"
+                -->
+                <div x-show="mOpen" class="absolute inset-x-0 top-0 origin-top transform p-2 transition md:hidden">
+                  <div class="overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-black ring-opacity-5">
+                    <div class="flex items-center justify-between px-5 pt-4">
+                      <div>
+                        <img class="h-8 w-auto" src="img/Risorsa 9.svg" alt="AgeingTimeUse">
+                      </div>
+                      <div class="-mr-2">
+                        <button @click="mOpen = false" type="button" class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-600">
+                          <span class="sr-only">Close </span>
+                          <!-- Heroicon name: outline/x-mark -->
+                          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="pt-5 pb-6">
+                      <div class="space-y-1 px-2">
+                        <a href="index.html" class="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-50">Home</a>
+          
+                        <a href="dashboard.html" class="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-50">Visualize</a>
+          
+                        <a href="about.html" class="block rounded-md px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-50">About</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          
+            </header>
 
-            <div class="collapse navbar-collapse" id="navbarsExample07">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="dashboard.html">Visualize</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav> <!-- end top-nav -->
-</header>
+                    <main class="bg-gray-900">    
+                        <div class="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8 lg:py-24">
+                        <div class="space-y-12 lg:grid lg:grid-cols-3 lg:gap-8 lg:space-y-0">
+                            <div class="space-y-5 sm:space-y-4">
+                            <h2 class="text-white text-3xl font-bold tracking-tight sm:text-4xl">About Us</h2>
+                            <p class="text-xl text-gray-200">The AgeingTimeUse project and the ATUS-X Visualizer was funded by the Marie Curie Fellowship under the Horizon 2020.</p>
+                            </div>
+                            <div class="lg:col-span-2">
+                            <ul role="list" class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:gap-x-8">
+                                <li>
+                                <div class="space-y-4">
+                                    <div class="aspect-w-3 aspect-h-2">
+                                    <img class="rounded-lg object-cover shadow-lg" src="img/profile_cartoon.png" alt="">
+                                    </div>
+                                    <div class="text-white space-y-1 text-lg font-medium leading-6">
+                                    <h3>Mila Kolpashnikova</h3>
+                                    <span class="bg-gradient-to-r from-teal-200 to-cyan-400 bg-clip-text pb-3 text-transparent sm:pb-5">PI and Full-Stack Developer</span>
+                                    </div>
+                                    <div class="text-lg">
+                                    <p class="text-gray-200">Currently postdoc at York University in Canada.</p>
+                                    </div>
+                    
+                                    <ul role="list" class="flex space-x-5">
+                                    <li>
+                                        <a href="https://twitter.com/KKolpashnikova" class="text-gray-400 hover:text-gray-500" target=”_blank”>
+                                        <span class="sr-only">Twitter</span>
+                                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                            <path d="M6.29 18.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0020 3.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.073 4.073 0 01.8 7.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 010 16.407a11.616 11.616 0 006.29 1.84" />
+                                        </svg>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/in/kamilakolpashnikova" class="text-gray-400 hover:text-gray-500" target=”_blank”>
+                                        <span class="sr-only">LinkedIn</span>
+                                        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                                            <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
+                                        </svg>
+                                        </a>
+                                    </li>
+                                    </ul>
+                                </div>
+                                </li>
+                    
+                                <!-- More people... -->
+                            </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </main>
 
-    <main>
-
-      <div class="px-4 py-5 my-5 text-center">
-        <img class="d-block mx-auto mb-4" src="img/Risorsa 9.svg" alt="" width="72" height="57">
-        <h1 class="display-5 fw-bold">Thanks for Your Interest!</h1>
-        <div class="col-lg-6 mx-auto">
-          <p class="lead mb-4">This website was created as a collection of examples how to visualize time use data. I am planning to expand this collection and create more explanations on how to transform data and use these code snippets.</p>
-          <p><i class="las la-copyright"></i>Mila Kolpashnikova</p>
-          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          </div>
-        </div>
-      </div>
-
-    </main>
-
-<footer class="bg-secondary">
-    <div class="footer-content container">
-        <div class="made-with"><i class="las la-copyright"></i>Kamila Kolpashnikova</div>
-        <div class="ATUSx">
-            <div class="data-text">Powered by <a class="data-resource" href="https://www.atusdata.org/atus/">ATUSx</a> 2011-2019 data</div>
-        </div>
-        <ul>
-            <li class="ms-3">Follow: </li>
-            <li class="ms-3"><a class="link-light" href="https://twitter.com/asocialscienti1" target="_blank"><i class="la la-twitter la"></i></a></li>
-            <li class="ms-3"><a class="link-light" href="https://www.linkedin.com/in/kamilakolpashnikova" target="_blank"><i class="la la-linkedin la"></i></a></li>
-            <li class="ms-3"><a class="link-light" href="https://github.com/Kolpashnikova" target="_blank"><i class="la la-github la"></i></a></li>
-        </ul>
-    </div> <!-- end footer-content -->
-</footer>
-
-<script src="js/bootstrap.bundle.min.js"></script>
-
-<script>
-    //window.onresize = function(){ location.reload(); }
-</script>
-
-
+    </div>
+  
+  
 </body>
 </html>
