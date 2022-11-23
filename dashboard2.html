@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html class="h-full bg-gray-100">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="img/vite.svg" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/extra.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/nv.d3.lean-test.js"></script>
+    <script src="js/stackedArea.js"></script>
+    <script src="js/d3.v4.js"></script>
+    <script src="js/d3-chord.v2.js"></script>
+    <script src="js/d3-path.v2.js"></script>
+    <script src="js/jquery.vmap.js"></script>
+    <script src="js/jquery.vmap.usa.js"></script>
+    <script src="js/liquidGauge.js"></script>
+    <script src="js/colors.js"></script>
+
+
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DFX5BQZ224"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-DFX5BQZ224');
+    </script>
+</head>
+<body class="h-full overflow-hidden">
+        <!--
+        This example requires some changes to your config:
+        
+        ```
+        // tailwind.config.js
+        module.exports = {
+            // ...
+            plugins: [
+            // ...
+            require('@tailwindcss/forms'),
+            ],
+        }
+        ```
+        -->
+        <!--
+        This example requires updating your template:
+
+        ```
+        <html class="h-full bg-gray-50">
+        <body class="h-full overflow-hidden">
+        ```
+        -->
+        <div class="flex h-full" x-data = "{ open: true }">
+            <!-- Narrow sidebar -->
+            <div class="hidden w-28 overflow-y-auto bg-gray-800 md:block">
+            <div class="flex w-full flex-col items-center py-6">
+                <div class="flex flex-shrink-0 items-center">
+                <img class="h-8 w-auto" src="img/Small_Logo.svg" alt="AgeingTimeUse">
+                </div>
+                <div class="mt-6 w-full flex-1 space-y-1 px-2">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <a href="index.html" class="text-gray-300 hover:bg-gray-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium">
+                    <!--
+                    Heroicon name: outline/home
+        
+                    Current: "text-gray-300", Default: "text-gray-300 hover:bg-gray hover:text-white"
+                    -->
+                    <svg id="icon" class="text-gray-300 hover:bg-gray hover:text-white h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                    </svg>
+                    <span class="mt-2">Home</span>
+                </a>
+
+                <a href="dashboard2.html" id="overview" class="bg-gray-900 text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium active nav-linked">
+                    <!-- Heroicon name: outline/squares-2x2 -->
+                    <i id="icon" class="las la-list la-2x text-gray-300 h-6 w-6"></i>
+                    <span class="mt-2">Overview</span>
+                </a>
+
+                <a href="tempogram.html" id="tempogram" class="text-gray-300 hover:bg-gray-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium nav-linked">
+                    <!-- Heroicon name: outline/squares-2x2 -->
+                    <i id="icon" class="las la-chart-area la-2x text-gray-300 hover:bg-gray hover:text-white h-6 w-6"></i>
+                    <span class="mt-2">Tempograms</span>
+                </a>
+        
+                <a href="transitions.html" id="transitions" class="text-gray-300 hover:bg-gray-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium nav-linked" aria-current="page">
+                    <!-- Heroicon name: outline/photo -->
+                    <i id="icon" class="las la-chart-pie la-2x text-gray-300 hover:bg-gray hover:text-white h-6 w-6"></i>
+                    <span class="mt-2">Transitions</span>
+                </a>
+        
+                <a href="path.html" id="moving" class="text-gray-300 hover:bg-gray-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium nav-linked">
+                    <!-- Heroicon name: outline/user-group -->
+                    <i id="icon" class="las la-expand-arrows-alt la-2x text-gray-300 hover:bg-gray hover:text-white h-6 w-6"></i>
+                    <span class="mt-2">Path Diaries</span>
+                </a>
+        
+                <a href="usmap.html" id="map" class="text-gray-300 hover:bg-gray-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium nav-linked">
+                    <!-- Heroicon name: outline/rectangle-stack -->
+                    <i id="icon" class="las la-map-marker la-2x text-gray-300 hover:bg-gray hover:text-white h-6 w-6"></i>
+                    <span class="mt-2">Map</span>
+                </a>
+        
+                <a href="totals.html" id="total" class="text-gray-300 hover:bg-gray-700 hover:text-white group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium nav-linked">
+                    <!-- Heroicon name: outline/cog -->
+                    <i id="icon" class="las la-hourglass-half la-2x text-gray-300 hover:bg-gray hover:text-white h-6 w-6"></i>
+                    <span class="mt-2">Total Time</span>
+                </a>
+                </div>
+            </div>
+            </div>
+        
+            <!--
+            Mobile menu
+        
+            Off-canvas menu for mobile, show/hide based on off-canvas menu state.
+            -->
+            <div class="relative z-20 md:hidden" role="dialog" aria-modal="true" x-show="open">
+            <!--
+                Off-canvas menu backdrop, show/hide based on off-canvas menu state.
+        
+                Entering: "transition-opacity ease-linear duration-300"
+                From: "opacity-0"
+                To: "opacity-100"
+                Leaving: "transition-opacity ease-linear duration-300"
+                From: "opacity-100"
+                To: "opacity-0"
+            -->
+            <div class="fixed inset-0 bg-gray-600 bg-opacity-75"></div>
+        
+            <div class="fixed inset-0 z-40 flex">
+                <!--
+                Off-canvas menu, show/hide based on off-canvas menu state.
+        
+                Entering: "transition ease-in-out duration-300 transform"
+                    From: "-translate-x-full"
+                    To: "translate-x-0"
+                Leaving: "transition ease-in-out duration-300 transform"
+                    From: "translate-x-0"
+                    To: "-translate-x-full"
+                -->
+                <div class="relative flex w-full max-w-xs flex-1 flex-col bg-gray-800 pt-5 pb-4">
+                <!--
+                    Close button, show/hide based on off-canvas menu state.
+        
+                    Entering: "ease-in-out duration-300"
+                    From: "opacity-0"
+                    To: "opacity-100"
+                    Leaving: "ease-in-out duration-300"
+                    From: "opacity-100"
+                    To: "opacity-0"
+                -->
+                <div class="absolute top-1 right-0 -mr-14 p-1">
+                    <button @click="open = !open" type="button" class="flex h-12 w-12 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-white">
+                    <!-- Heroicon name: outline/x-mark -->
+                    <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <span class="sr-only">Close sidebar</span>
+                    </button>
+                </div>
+        
+                <div class="flex flex-shrink-0 items-center px-4">
+                    <img class="h-8 w-auto" src="img/Risorsa 9.svg" alt="AgeingTimeUse">
+                </div>
+                <div class="mt-5 h-0 flex-1 overflow-y-auto px-2">
+                    <nav class="flex h-full flex-col">
+                    <div class="space-y-1">
+                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                        <a href="index.html" class="text-gray-300 hover:bg-gray-700 hover:text-white group py-2 px-3 rounded-md flex items-center text-sm font-medium">
+                        <!--
+                            Heroicon name: outline/home
+        
+                            Current: "text-white", Default: "text-gray-300 hover:bg-gray hover:text-white"
+                        -->
+                        <svg class="text-gray-300 hover:bg-gray hover:text-white mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                        </svg>
+                        <span>Home</span>
+                        </a>
+        
+                        <a href="dashboard2.html" id="overview" class="text-gray-300 hover:bg-gray-700 hover:text-white group py-2 px-3 rounded-md flex items-center text-sm font-medium active nav-linked">
+                            <!-- Heroicon name: outline/squares-2x2 -->
+                            <i id="icon" class="las la-list la-2x text-gray-300 hover:bg-gray hover:text-white mr-3 h-6 w-6"></i>
+                            <span>Overview</span>
+                        </a>
+
+                        <a href="tempogram.html" id="tempogram" class="text-gray-300 hover:bg-gray-700 hover:text-white group py-2 px-3 rounded-md flex items-center text-sm font-medium nav-linked">
+                        <!-- Heroicon name: outline/squares-2x2 -->
+                        <i id="icon" class="las la-chart-area la-2x text-gray-300 hover:bg-gray hover:text-white mr-3 h-6 w-6"></i>
+                        <span>Tempograms</span>
+                        </a>
+        
+                        <a href="transitions.html" id="transitions" class="bg-gray-900 text-white group py-2 px-3 rounded-md flex items-center text-sm font-medium nav-linked" aria-current="page">
+                        <!-- Heroicon name: outline/photo -->
+                        <i id="icon" class="las la-chart-pie la-2x text-gray-300 hover:bg-gray hover:text-white mr-3 h-6 w-6"></i>
+                        <span>Transitions</span>
+                        </a>
+        
+                        <a href="path.html" id="moving" class="text-gray-300 hover:bg-gray-700 hover:text-white group py-2 px-3 rounded-md flex items-center text-sm font-medium nav-linked">
+                        <!-- Heroicon name: outline/user-group -->
+                        <i id="icon" class="las la-expand-arrows-alt la-2x text-gray-300 hover:bg-gray hover:text-white mr-3 h-6 w-6"></i>
+                        <span>Path Diaries</span>
+                        </a>
+        
+                        <a href="usmap.html" id="map" class="text-gray-300 hover:bg-gray-700 hover:text-white group py-2 px-3 rounded-md flex items-center text-sm font-medium nav-linked">
+                        <!-- Heroicon name: outline/rectangle-stack -->
+                        <i id="icon" class="las la-map-marker la-2x text-gray-300 hover:bg-gray hover:text-white mr-3 h-6 w-6"></i>
+                        <span>Map</span>
+                        </a>
+        
+                        <a href="totals.html" id="total" class="text-gray-300 hover:bg-gray-700 hover:text-white group py-2 px-3 rounded-md flex items-center text-sm font-medium nav-linked">
+                        <!-- Heroicon name: outline/cog -->
+                        <i id="icon" class="las la-hourglass-half la-2x text-gray-300 hover:bg-gray hover:text-white mr-3 h-6 w-6"></i>
+                        <span>Total Time</span>
+                        </a>
+                    </div>
+                    </nav>
+                </div>
+                </div>
+        
+                <div class="w-14 flex-shrink-0" aria-hidden="true">
+                <!-- Dummy element to force sidebar to shrink to fit close icon -->
+                </div>
+            </div>
+            </div>
+        
+            <!-- Content area -->
+            <div class="flex flex-1 flex-col overflow-hidden">
+            <header class="w-full">
+                <div class="relative z-10 flex h-16 flex-shrink-0 border-b border-gray-200 bg-white shadow-sm">
+                <button @click="open = true" type="button" class="border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 md:hidden">
+                    <span class="sr-only">Open sidebar</span>
+                    <!-- Heroicon name: outline/bars-3-bottom-left -->
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" />
+                    </svg>
+                </button>
+ 
+                </div>
+            </header>
+        
+            <!-- Main content -->
+            <div class="flex flex-1 items-stretch overflow-hidden">
+                <main class="flex-1 overflow-y-auto">
+                <!-- Primary column -->
+                <section id="grid-elements" aria-labelledby="primary-heading" class="flex h-full min-w-0 flex-1 flex-col lg:order-last px-10">
+                    <h1 id="primary-heading" class="sr-only">Photos</h1>
+                    <!-- Your content -->
+                    <!--
+                    This example requires some changes to your config:
+                    
+                    ```
+                    // tailwind.config.js
+                    const colors = require('tailwindcss/colors')
+                    
+                    module.exports = {
+                        // ...
+                        theme: {
+                        extend: {
+                            colors: {
+                            sky: colors.sky,
+                            teal: colors.teal,
+                            rose: colors.rose,
+                            },
+                        },
+                        },
+                    }
+                    ```
+                    -->
+                        <ul role="list" class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-3 xl:gap-x-8">
+                            <li class="relative">
+                              <div class="group aspect-w-10 aspect-h-7 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-gray-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                                <img src="img/tempogram.PNG" alt="" class="pointer-events-none object-cover group-hover:opacity-75">
+                                <a href="tempogram.html" id="tempogram" type="button" class="absolute inset-0 focus:outline-none button-linked">
+                                  <span class="sr-only">View details for IMG_4985.HEIC</span>
+                                </a>
+                              </div>
+                              <p class="pointer-events-none mt-2 block truncate text-sm font-medium text-gray-900">Tempograms</p>
+                              <p class="pointer-events-none block text-sm font-medium text-gray-500">R package</p>
+                            </li>
+
+                            <li class="relative">
+                                <div class="group aspect-w-10 aspect-h-7 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-gray-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                                  <img src="img/transitions.PNG" alt="" class="pointer-events-none object-cover group-hover:opacity-75">
+                                  <a href="transitions.html" id="transitions" type="button" class="absolute inset-0 focus:outline-none button-linked">
+                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
+                                  </a>
+                                </div>
+                                <p class="pointer-events-none mt-2 block truncate text-sm font-medium text-gray-900">Transitions</p>
+                                <p class="pointer-events-none block text-sm font-medium text-gray-500">R package</p>
+                              </li>
+
+                              <li class="relative">
+                                <div class="group aspect-w-10 aspect-h-7 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-gray-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                                  <img src="img/path.PNG" alt="" class="pointer-events-none object-cover group-hover:opacity-75">
+                                  <a href="path.html" id="moving" type="button" class="absolute inset-0 focus:outline-none button-linked">
+                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
+                                  </a>
+                                </div>
+                                <p class="pointer-events-none mt-2 block truncate text-sm font-medium text-gray-900">Path Diaries</p>
+                                <p class="pointer-events-none block text-sm font-medium text-gray-500">R package</p>
+                              </li>
+
+                              <li class="relative">
+                                <div class="group aspect-w-10 aspect-h-7 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-gray-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                                  <img src="img/usmap.png" alt="" class="pointer-events-none object-cover group-hover:opacity-75">
+                                  <a href="usmap.html" id="map" type="button" class="absolute inset-0 focus:outline-none button-linked">
+                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
+                                  </a>
+                                </div>
+                                <p class="pointer-events-none mt-2 block truncate text-sm font-medium text-gray-900">Map</p>
+                                <p class="pointer-events-none block text-sm font-medium text-gray-500">R package</p>
+                              </li>
+
+                              <li class="relative">
+                                <div class="group aspect-w-10 aspect-h-7 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-gray-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
+                                  <img src="img/totals.png" alt="" class="pointer-events-none object-cover group-hover:opacity-75">
+                                  <a href="totals.html" id="total" type="button" class="absolute inset-0 focus:outline-none button-linked">
+                                    <span class="sr-only">View details for IMG_4985.HEIC</span>
+                                  </a>
+                                </div>
+                                <p class="pointer-events-none mt-2 block truncate text-sm font-medium text-gray-900">Total time</p>
+                                <p class="pointer-events-none block text-sm font-medium text-gray-500">R package</p>
+                              </li>
+                          
+                            <!-- More files... -->
+                          </ul>
+  
+                </section>
+                </main>
+            </div>
+            </div>
+        </div>
+  
+
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script type="module" src="js/main.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+                integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha"
+                crossorigin="anonymous"></script>
+        
+        <script>
+            window.onload = function(){
+                $("#export-button").hide();
+                $("#stackedAreaChartContainer").hide();
+                $("#chordChartContainer").hide();
+                $("#pathChartContainer").hide();
+                $("#mapChartContainer").hide();
+                $("#glassContainer").hide(); 
+            }
+        </script>
+        
+        <script>
+            $(document).ready(function(){ 
+        
+                $('.nav-linked, .button-linked').on("click", function(){
+        
+                    $('.nav-linked').removeClass('active');
+                    $('.nav-linked').removeClass('bg-gray-900 text-white');
+                    $('.nav-linked').addClass('text-gray-300 hover:bg-gray-700 hover:text-white');
+
+                    var iden = this.id;
+                    
+                    $('#' + iden +'.nav-linked').addClass('active');
+                    $('#' + iden +'.nav-linked').addClass('bg-gray-900 text-white');
+        
+                    if ($(this).attr('id') == 'tempogram'){
+                        $(document).prop('title', 'Dashboard | Tempogram');
+                        $("#export-button").show();
+                        $("#grid-elements").hide();
+                        $("#stackedAreaChartContainer").show();
+                        $("#chordChartContainer").hide();
+                        $("#pathChartContainer").hide();
+                        $("#mapChartContainer").hide();
+                        $("#glassContainer").hide(); 
+                        $("#codepen").hide();               
+                    } else if ($(this).attr('id') == 'transitions'){
+                        $(document).prop('title', 'Dashboard | Transitions');
+                        $("#export-button").show();
+                        $("#grid-elements").hide();
+                        $("#stackedAreaChartContainer").hide();
+                        $("#chordChartContainer").show();
+                        $("#pathChartContainer").hide();
+                        $("#mapChartContainer").hide();
+                        $("#glassContainer").hide();
+                        $("#codepen").hide();      
+                    } else if ($(this).attr('id') == 'overview'){
+                        $(document).prop('title', 'Dashboard | Overview');
+                        $("#export-button").hide();
+                        $("#grid-elements").show();
+                        $("#stackedAreaChartContainer").hide();
+                        $("#chordChartContainer").hide();
+                        $("#pathChartContainer").hide();
+                        $("#mapChartContainer").hide();
+                        $("#glassContainer").hide();
+                        $("#codepen").hide();      
+                    } else if ($(this).attr('id') == 'moving'){
+                        $(document).prop('title', 'Dashboard | Paths');
+                        $("#export-button").show();
+                        $("#grid-elements").hide();
+                        $("#stackedAreaChartContainer").hide();
+                        $("#chordChartContainer").hide();
+                        $("#pathChartContainer").show();
+                        $("#mapChartContainer").hide();
+                        $("#glassContainer").hide();
+                        $("#codepen").hide();      
+                    } else if ($(this).attr('id') == 'map'){
+                        $(document).prop('title', 'Dashboard | Map');
+                        $("#export-button").show();
+                        $("#grid-elements").hide();
+                        $("#stackedAreaChartContainer").hide();
+                        $("#chordChartContainer").hide();
+                        $("#pathChartContainer").hide();
+                        $("#mapChartContainer").show();
+                        $("#glassContainer").hide();
+                        $("#codepen").hide();      
+                    } else if ($(this).attr('id') == 'total'){
+                        $(document).prop('title', 'Dashboard | Totals');
+                        $("#export-button").show();
+                        $("#grid-elements").hide();
+                        $("#stackedAreaChartContainer").hide();
+                        $("#chordChartContainer").hide();
+                        $("#pathChartContainer").hide();
+                        $("#mapChartContainer").hide();
+                        $("#glassContainer").show();
+                        $("#codepen").hide();      
+                    }
+                });
+            });
+        </script>
+       
+    
+</body>
+</html>
